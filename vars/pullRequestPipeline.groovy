@@ -1,4 +1,4 @@
-def call(Object name, String database, String url) {
+def call(Object name, String database, String url, String id) {
 	pipeline {
    agent any
 
