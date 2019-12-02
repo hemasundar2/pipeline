@@ -1,4 +1,4 @@
-def call(Object name, String database) {
+def call(Object name, String database, String url) {
 	pipeline {
    agent any
 
@@ -8,7 +8,7 @@ def call(Object name, String database) {
             echo 'Hello World'+name
 		               withCredentials([usernamePassword(credentialsId: '5f71cca3-f7b0-416a-b799-afb61fa4bb9e', passwordVariable: 'DB_PASSWORD', usernameVariable: 'DB_USER')]) {
 				       echo 'Hello World 1'+DB_USER
-	     createDatabase(DB_USER,DB_PASSWORD,database)
+	     createDatabase(DB_USER,DB_PASSWORD,database, url)
 }
               
          }
