@@ -1,31 +1,72 @@
 def call(Object name, String database, String context ) {
 	pipeline {
-   agent any
-   environment {
-     skipBuild = true
-   }
-   stages {
+		agent any
 
-      stage('Hello') {
-	 when {
-	// environment variables are always stored as Strings and need to be converted
-	expression {!skipBuild.toBoolean()}
+		options {
+
+		}
+
+		parameters {
+			
+		}
+
+environment {
+skipBuild = false
+}
+
+		stages {
+			stage ('Checkout') {
+				steps {
+					// Clean the workspace before beginning
+					echo 'Checkout started'
+	
+
+					echo 'Checkout Finished'
+				}
+			}
+
+			stage ("Create Database") {
+
+				when {
+					// environment variables are always stored as Strings and need to be converted
+					expression {!skipBuild.toBoolean()}
+				}
+
+				steps{
+					
+					}
+				}
+
+			}
+
+			stage ("Build Database") {
+				when {
+					// environment variables are always stored as Strings and need to be converted
+					expression {!skipBuild.toBoolean()}
+				}
+
+				steps {
+					echo "Notifying Bitbucket of build in progress"
+
+				}
+
+				post {
+					always {
+						
+					}
+
+					success {
+						// Build result needs to be updated for bitbucket notification to work; see https://github.com/jenkinsci/stashnotifier-plugin
+
+
+					}
+
+					failure {
+						// Build result needs to be updated for bitbucket notification to work; see https://github.com/jenkinsci/stashnotifier-plugin
+
+					}
+				}
+			}
+		}
 	}
-         steps {
-            echo 'Hello World   '
-		 test("Test", context+"_"+database+"_CORE")
-		//  echo 'database name'+id+"_"+db
-		               withCredentials([usernamePassword(credentialsId: '5f71cca3-f7b0-416a-b799-afb61fa4bb9e', passwordVariable: 'DB_PASSWORD', usernameVariable: 'DB_USER')]) {
-				       echo 'Hello World 1'+database
-	    // createDatabase(DB_USER,DB_PASSWORD,database, url)
-}
-              
-         }
-      }
-   }
-}
-}
-def test(String a, String s)
-{
-	 echo 'Hello World 3  '+a+s
 }
