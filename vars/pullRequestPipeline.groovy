@@ -7,6 +7,10 @@ def call(Object name, String database, String context ) {
    stages {
 
       stage('Hello') {
+	 when {
+	// environment variables are always stored as Strings and need to be converted
+	expression {!skipBuild.toBoolean()}
+	}
          steps {
             echo 'Hello World   '
 		 test("Test", context+"_"+database+"_CORE")
