@@ -3,7 +3,7 @@ def call(Object name, String database, String context ) {
    agent any
    environment {
 			id = 2
-			db = id+"_"+database+"_CORE"
+			db = database+"_CORE"
 		}
    stages {
       stage('Hello') {
