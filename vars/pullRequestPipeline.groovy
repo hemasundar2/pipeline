@@ -40,6 +40,7 @@ def call(Object name, String database, String context ) {
 
 				steps {
 					echo "Notifying Bitbucket of build in progress"
+					printTest()
 
 				}
 
@@ -60,4 +61,6 @@ def call(Object name, String database, String context ) {
 			}
 		}
 	}
-
+def printTest(){
+	echo "Create database 1"	
+}
