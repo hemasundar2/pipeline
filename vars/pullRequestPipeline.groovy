@@ -4,7 +4,7 @@ def call(Object name, String database, String context ) {
 
 
 		environment {
-			skipBuild = false
+			boolean skipBuild = false
 		}
 
 		stages {
