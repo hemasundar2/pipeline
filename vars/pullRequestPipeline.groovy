@@ -1,4 +1,4 @@
-def call(Object name) {
+def call() {
 	pipeline {
    agent any
 
