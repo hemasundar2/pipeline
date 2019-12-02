@@ -1,4 +1,4 @@
-def call(Object name, String database, String environment ) {
+def call(Object name, String database, String env ) {
 	pipeline {
 		agent any
 
@@ -11,7 +11,7 @@ def call(Object name, String database, String environment ) {
 			stage ('Checkout') {
 				steps {
 					// Clean the workspace before beginning
-					echo 'Checkout started'+environment
+					echo 'Checkout started'+env
 
 
 					echo 'Checkout Finished'
