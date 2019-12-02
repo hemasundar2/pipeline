@@ -1,10 +1,11 @@
 def call(Object name, String database, String context ) {
 	pipeline {
    agent any
-script {
+
+   stages {
+	   script {
                  foo = "bar"
             }
-   stages {
       stage('Hello') {
          steps {
             echo 'Hello World   '+context+"_"+database+"_CORE"+foo
