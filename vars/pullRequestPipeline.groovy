@@ -6,10 +6,12 @@ def call(Object name) {
       stage('Hello') {
          steps {
             echo 'Hello World'+name
-		               withCredentials([usernamePassword(credentialsId: 'e5f8e3f0-dd6f-44c8-a89d-29375ea34cd9', passwordVariable: 'PASSWORD', usernameVariable: 'USER_NAME')]) {
-             echo 'Hello World 1'+USER_NAME
-	     createDatabase(USER_NAME,PASSWORD)
-              }
+		               withCredentials([usernamePassword(credentialsId: 'e5f8e3f0-dd6f-44c8-a89d-29375ea34cd9', passwordVariable: 'DB_PASSWORD', usernameVariable: 'DB_USER')]) {
+    
+				       echo 'Hello World 1'+USER_NAME
+	     createDatabase(DB_USER,DB_PASSWORD)
+}
+              
          }
       }
    }
