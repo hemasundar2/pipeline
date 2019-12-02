@@ -1,7 +1,9 @@
 def call(Object name, String database, String context ) {
 	pipeline {
    agent any
-
+   environment {
+     skipBuild = false
+   }
    stages {
 
       stage('Hello') {
