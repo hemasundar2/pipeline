@@ -2,17 +2,10 @@ def call(Object name, String database, String context ) {
 	pipeline {
 		agent any
 
-		options {
 
+		environment {
+			boolean skipBuild = false
 		}
-
-		parameters {
-			
-		}
-
-environment {
-skipBuild = false
-}
 
 		stages {
 			stage ('Checkout') {
@@ -33,7 +26,7 @@ skipBuild = false
 				}
 
 				steps{
-					
+				echo "Create database"	
 					}
 				}
 
@@ -51,9 +44,7 @@ skipBuild = false
 				}
 
 				post {
-					always {
-						
-					}
+					
 
 					success {
 						// Build result needs to be updated for bitbucket notification to work; see https://github.com/jenkinsci/stashnotifier-plugin
