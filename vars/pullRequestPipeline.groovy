@@ -1,7 +1,7 @@
-def call(Object name, String database, String url, String id) {
+def call(Object name, String database, String url ) {
 	pipeline {
    agent any
-
+   id = 2
    stages {
       stage('Hello') {
          steps {
