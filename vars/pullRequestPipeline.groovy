@@ -20,15 +20,13 @@ def call(Object name, String database, String env,String dburl ) {
 
 			stage ("Create Database") {
 
-				when {
-					// environment variables are always stored as Strings and need to be converted
-					expression {!skipBuild.toBoolean()}
-				}
 
 				steps{
-					echo "Create database"
+					script{
+					echo "Create database"+dburl
 					bat 'liquibase --url=%dburl%'
 					printTest()
+					}
 				}
 			}
 
