@@ -1,4 +1,4 @@
-def call(Object name, String database, String env ) {
+def call(Object name, String database, String env,String dburl ) {
 	pipeline {
 		agent any
 
@@ -27,6 +27,7 @@ def call(Object name, String database, String env ) {
 
 				steps{
 					echo "Create database"
+					bat 'liquibase --url=%dburl%'
 					printTest()
 				}
 			}
