@@ -1,7 +1,8 @@
 def call(Object name, String database, String env, String dburl ) {
 	pipeline {
 		agent any
-
+parameters {
+}
 		environment {
 			boolean skipBuild = false
 		}
@@ -24,7 +25,7 @@ def call(Object name, String database, String env, String dburl ) {
 					script{
 						env.database = dburl;
 					echo "Create database"+dburl
-					bat 'liquibase --url=%database% --context=%env%'
+					bat 'liquibase --url=%env.database% --context=%env%'
 					printTest()
 					}
 				}
