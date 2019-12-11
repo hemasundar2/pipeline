@@ -3,7 +3,7 @@ def call(Object name, String database, String env, String dburl ) {
 		agent any
 		environment {
 			boolean skipBuild = false
-			DB_URL = dburl
+			def DB_URL = dburl
 		}
 
 		stages {
