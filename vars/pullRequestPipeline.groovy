@@ -1,11 +1,7 @@
-def call(Object name, String database ) {
+def call(Object name, String database, String env, String dburl ) {
 	pipeline {
 		agent any
 
-		parameters {
-			string defaultValue: '', description: 'The target revision being merged into', name: 'dburl', trim: false
-			string defaultValue: '', description: 'The source revision for the merge', name: 'env', trim: false
-			}
 		environment {
 			boolean skipBuild = false
 		}
@@ -26,8 +22,9 @@ def call(Object name, String database ) {
 
 				steps{
 					script{
+						env.URL = dburl;
 					echo "Create database"+dburl
-					bat 'liquibase --url=%dburl% --context=%env%'
+					bat 'liquibase --url=%URL% --context=%env%'
 					printTest()
 					}
 				}
