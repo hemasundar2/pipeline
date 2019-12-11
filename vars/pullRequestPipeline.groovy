@@ -22,9 +22,9 @@ def call(Object name, String database, String env, String dburl ) {
 
 				steps{
 					script{
-						env.URL = dburl;
+						env.database = dburl;
 					echo "Create database"+dburl
-					bat 'liquibase --url=%URL% --context=%env%'
+					bat 'liquibase --url=%database% --context=%env%'
 					printTest()
 					}
 				}
